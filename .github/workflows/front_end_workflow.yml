@@ -37,6 +37,7 @@ jobs:
         role-to-assume: ${{ secrets.AUTORIZE_ROLE }}
         # role-session-name: github-session
 
+
     - name: Sync S3 Static files
       run: aws s3 sync static_file_s3 ${{ secrets.S3_BUCKET }} --delete
 
