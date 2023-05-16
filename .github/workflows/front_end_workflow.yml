@@ -46,7 +46,7 @@ jobs:
     - name: Sync S3 Static files
       run: |
         ls
-        aws s3 sync ./static_file_s3/ ${{ secrets.S3_BUCKET }} --delete
+        aws s3 sync static_files_s3 ${{ secrets.S3_BUCKET }} --delete
 
 
     - name: Invalidate CloudFront cache
