@@ -1,0 +1,47 @@
+name: Update S3 files with new code
+
+on:
+  push:
+    # paths:
+    #   - 'static_files_s3/**'
+      
+
+  workflow_dispatch: # Allow to run this workflow manually from the Actions tab
+    # inputs:
+    #   trigger:
+    #     description: "apply OR destroy" # apply to build infra, destroy to destroy it all.
+    #     required: true
+    #     default: apply # will choose the word apply for you when triggering the pipeline manually.
+    #     type: choice
+    #     options:
+    #     - apply
+    #     - destroy
+
+env:
+  AWS_REGION: eu-south-1 
+  # TRIGGER: 'apply' # Make it 'apply' to build AWS infra, and 'destroy' to destroy it all. "auto_workflow (on Push)"
+  # TRIGGER: '${{ inputs.trigger }}' # "manual workflow"
+
+jobs:
+  push-code-to-s3:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-region: ${{ env.AWS_REGION }}
+        role-to-assume: ${{ secrets.AUTORIZE_ROLE }}
+        role-session-name: github-session
+
+    - name: Sync S3 Static files
+      run: aws s3 sync static_file_s3 ${{ secrets.S3_BUCKET }} --delete
+
+
+    - name: Invalidate CloudFront cache
+      run: |
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} --paths "/*"
+
