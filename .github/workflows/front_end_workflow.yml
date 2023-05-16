@@ -40,13 +40,11 @@ jobs:
       with:
         aws-region: ${{ env.AWS_REGION }}
         role-to-assume: ${{ secrets.AUTORIZE_ROLE }}
-        # role-session-name: github-session
+        role-session-name: github-session
 
 
     - name: Sync S3 Static files
-      run: |
-        ls
-        aws s3 sync static_files_s3 ${{ secrets.S3_BUCKET }} --delete
+      run: aws s3 sync static_files_s3 ${{ secrets.S3_BUCKET }} --delete
 
 
     - name: Invalidate CloudFront cache
