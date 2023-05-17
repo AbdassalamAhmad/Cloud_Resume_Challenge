@@ -1,5 +1,10 @@
+## Project Architecture
+![Project Architecture](https://github.com/AbdassalamAhmad/Cloud_Resume_Challenge/assets/83673888/d24becc1-ff6a-454e-b60f-230069c1c610)
+
+
 ## Assume Role Security [Important Note]
 - I've used OIDC instead of putting my AWS Credentials in the Github Workflow secrets.
+- I was folowing this [tutorial](https://cloudscalr.com/deploy-to-aws-with-terraform-within-a-github-action) to implement this additional security.
 - when creating the Idp manually in the new UI, it didn't allow me to edit the policy until after creation.
 #### Very Importnat Note
 - If you didn't edit that policy anyone who knows your role name and your account ID will can mess up with your AWS account depending on the level of access you gave to the role.
