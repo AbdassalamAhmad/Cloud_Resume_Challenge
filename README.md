@@ -1,5 +1,75 @@
+# Cloud_Resume_Challenge
+
+The [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/aws/) was created by [Forrest Brazeal](https://forrestbrazeal.com/) as a self-guided, hands-on project to incorporate a large range of skills used by DevOps Engineers and Cloud Developers.
+
+The challenge is designed to champion *self-learning* as it intentionally gives only high-level guidance on how to research, navigate, and implement core topics such as DNS, APIs, Testing, Infrastructure-as-Code, and CI/CD pipelines.
+
+</br>
+
 ## Project Architecture
 ![Project Architecture](https://github.com/AbdassalamAhmad/Cloud_Resume_Challenge/assets/83673888/d24becc1-ff6a-454e-b60f-230069c1c610)
+
+
+## Project Workflow Summary
+### User Perspective
+- The user request the cloud resume at [abdassalam.dev](https://abdassalam.dev) or [www.abdassalam.dev](https://www.abdassalam.dev) and will be redirected to [abdassalam.dev](https://abdassalam.dev).
+- Route53 will route the traffic to CloudFront distributaion.
+- CloudFront will serve the cached content from S3 bucket.
+- ACM (Amazon Certificate Manager) provide SSL certificate to CloudFront (https).
+- Number of visitors is stored in DynamoDB table and retrieved and updated by Lambda function that is invoked by API Gateway.
+- Google Analytics is used to provide key insights about visitors location and number of vistors per minute.
+### Developer Perspective
+- The developer will push the code to GitHub.
+- A GitHub Action Workflow will be run.
+- It will push new content to S3 and Invalidate CloudFront cache.
+- It also modify the infrastructure using terraform.
+
+
+## Challenge Steps:
+1. Pass AWS Certification:
+- Passed AWS Cloud Practitioner Exam on  December 2022. Verify using [Credly](https://www.credly.com/badges/4e10de09-a9ff-462c-aff6-a7c6c0bacf82)
+2. HTML & 3. CSS:
+- I got A CV template written in plain HTML & CSS and modified it to meet my needs.
+4. Static Website:
+- Created an S3 Bucket, enabled static hosting, versioning and allow public access.
+5. HTTPS:
+- Used ACM (Amazon Certificate Manager) to issue an SSL certificate for the domain and all subdomains and attach it to CloudFront.
+- Utilized CloudFront to cache the S3 content and serve people from all over the world faster.
+- Redirect HTTP to HTTPS.
+6. DNS:
+- I bought a custom domain name called [abdassalam.dev](https://abdassalam.dev)
+- Created an A record that direct traffic from abdassalam.dev to CloudFront distribution.
+- Created a CNAME record that redirect users from www.abdassalam.dev to abdassalam.dev
+- Created another CNAME record for the certificate.
+- Created MX and TXT records to forward emails from devops@abdassalam.dev to my gmail.
+7. JavaScript:
+- Wrote a simple async function that perform a GET request to retrieve data from an API.
+- If the APT return status code of 200, then display the number of visitors.
+8. Database:
+- Created a simple DynamoDB Table that has two attributes {ID(primary Key), Visitors_Count}
+- The reason for ID is to be able to retreive the visitors count from a querey of ID = 1.
+9. API Gateway:
+- Used HTTP API to perform 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Assume Role Security [Important Note]
