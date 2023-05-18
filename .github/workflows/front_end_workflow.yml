@@ -2,8 +2,8 @@ name: Update S3 files with new code
 
 on:
   push:
-    # paths:
-    #   - 'static_files_s3/**'
+    paths:
+      - 'static_files_s3/**'
       
 
   workflow_dispatch: # Allow to run this workflow manually from the Actions tab
@@ -40,7 +40,6 @@ jobs:
       with:
         aws-region: ${{ env.AWS_REGION }}
         role-to-assume: ${{ secrets.AUTORIZE_ROLE }}
-        role-session-name: github-session
 
 
     - name: Sync S3 Static files
