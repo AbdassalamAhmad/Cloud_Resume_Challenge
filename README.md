@@ -1,3 +1,4 @@
+[![Sync S3 Website Content](https://github.com/AbdassalamAhmad/Cloud_Resume_Challenge/actions/workflows/front_end_workflow.yml/badge.svg)](https://github.com/AbdassalamAhmad/Cloud_Resume_Challenge/actions/workflows/front_end_workflow.yml)
 # Cloud_Resume_Challenge
 
 The [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/aws/) was created by [Forrest Brazeal](https://forrestbrazeal.com/) as a self-guided, hands-on project to incorporate a large range of skills used by DevOps Engineers and Cloud Developers.
