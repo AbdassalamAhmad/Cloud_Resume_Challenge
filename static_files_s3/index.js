@@ -1,6 +1,6 @@
 const getVisitorsCount = async ()=> {
   try {
-    const gateway_url = "https://p5ox4dc5q7.execute-api.eu-south-1.amazonaws.com/GetVisitorsCount"
+    const gateway_url = "https://tdx1fsem9d.execute-api.eu-south-1.amazonaws.com/GetVisitorsCount"
     const res = await fetch(gateway_url, {
       method: "GET",
       headers: {
